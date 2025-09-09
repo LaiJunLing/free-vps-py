@@ -52,10 +52,10 @@ PROJECT_DIR="python-xray-argo"
 if [ ! -d "$PROJECT_DIR" ]; then
     echo -e "${BLUE}下载完整仓库...${NC}"
     if command -v git &> /dev/null; then
-        git clone https://github.com/eooce/python-xray-argo.git
+        git clone https://github.com/laijunling/python-xray-argo.git
     else
         echo -e "${YELLOW}Git未安装，使用wget下载...${NC}"
-        wget -q https://github.com/eooce/python-xray-argo/archive/refs/heads/main.zip -O python-xray-argo.zip
+        wget -q https://github.com/laijunling/python-xray-argo/archive/refs/heads/main.zip -O python-xray-argo.zip
         if command -v unzip &> /dev/null; then
             unzip -q python-xray-argo.zip
             mv python-xray-argo-main python-xray-argo
@@ -137,9 +137,9 @@ else
     fi
 
     echo -e "${YELLOW}当前优选IP: $(grep "CFIP = " app.py | cut -d"'" -f4)${NC}"
-    read -p "请输入优选IP/域名 (留空使用默认 joeyblog.net): " CFIP_INPUT
+    read -p "请输入优选IP/域名 (留空使用默认 www.visa.com): " CFIP_INPUT
     if [ -z "$CFIP_INPUT" ]; then
-        CFIP_INPUT="joeyblog.net"
+        CFIP_INPUT="www.visa.com"
     fi
     sed -i "s/CFIP = os.environ.get('CFIP', '[^']*')/CFIP = os.environ.get('CFIP', '$CFIP_INPUT')/" app.py
     echo -e "${GREEN}优选IP已设置为: $CFIP_INPUT${NC}"
